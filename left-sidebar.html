@@ -23,7 +23,7 @@
 
 						<!-- Logo -->
 							<div id="logo">
-							<img src="images/logo.jpg" width="10%" height="100%">
+							<img src="images/logo.png" width="10%" height="100%">
 								<h1><a href="index.html">Safe </a></h1>
 								<p>Created by Lits team </p>
 							</div>
@@ -50,7 +50,20 @@
 
 						<!-- Content -->
 							<div id="content">
-							
+								<div id="list" >
+				<div class="listproj">
+          <ul id="myUL">
+            
+          </ul>
+				</div>
+				  <div id="myDIV" class="header">
+            <input type="text" id="myInput" placeholder="Title...">
+			<span onclick="newElement()" class="addBtn">Add</span>
+            
+          </div>
+			
+
+			</div>
 							</div>
 
 					</div>
@@ -81,6 +94,193 @@
 			<script src="assets/js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="assets/js/main.js"></script>
+			<script>
+var j,e;
+var ConnMask="conm_";
 
+			var element = document.getElementById("myInput");
+
+				
+              // Create a "close" button and append it to each list item
+              var myNodelist = document.getElementsByClassName("abc")
+
+              var i;
+              for (i = 0; i < myNodelist.length; i++) {
+                var span = document.createElement("SPAN");
+                var txt = document.createTextNode("\u00D7");
+                span.className = "close";
+                span.appendChild(txt);
+                myNodelist[i].appendChild(span);
+              }
+
+              // Click on a close button to hide the current list item
+              var close = document.getElementsByClassName("close");
+              var i;
+              for (i = 0; i < close.length; i++) {
+                close[i].onclick = function() {
+                  var div = this.parentElement;
+                  div.style.display = "none";
+                }
+              }
+
+              // Add a "checked" symbol when clicking on a list item
+              var list = document.querySelector('ul');
+              list.addEventListener('click', function(ev) {
+                if (ev.target.tagName === 'LI') {
+                  ev.target.classList.toggle('checked');
+                }
+              }, false);
+
+              // Create a new list item when clicking on the "Add" button
+             
+ function newElement() {
+                 e="";
+	
+
+	
+	for(i=0;i<1;i++){
+  var m = localStorage.getItem(ConnMask + i);
+	
+	
+	
+	var f = 1;
+
+	if(f==1){
+		
+				
+				 j = myUL.children.length;
+				 
+				var o = document.getElementById("myInput").value;
+				localStorage.setItem(j, o);
+					
+				 var inputValue = localStorage.getItem(j);
+             
+				
+				
+                var t = document.createTextNode(inputValue);
+                
+
+                if (inputValue === '') {
+                  alert("You must write something!");
+                } else {
+				var a = document.createElement("A");
+                var li = document.createElement("li");
+                 var ul = document.getElementById("myUL");  
+
+
+                var a = document.createElement("a");
+                ul.appendChild(li);
+                a.appendChild(t);
+                li.setAttribute('class','abc');
+                li.setAttribute('data-itemid',j);
+                li.insertBefore(a,li.firstChild);
+
+                a.setAttribute('href','secondary.html');
+				
+                
+                document.getElementById("myInput").value = "";
+
+                var span = document.createElement("SPAN");
+                var txt = document.createTextNode("\u00D7");
+                span.className = "close";
+                span.appendChild(txt);
+                li.appendChild(span);
+					}
+					
+					
+					
+                
+              }else {
+			  document.getElementById("myInput").value = "";
+			  alert("Please sign in your account")
+			  }}}  
+			  var p = 0;
+			  
+			  
+			  //load function-----------------------------------------------------
+			  function load() {
+			  e="";
+	
+
+
+	for(i=0;i<1;i++){
+  var m = localStorage.getItem(ConnMask + i);
+	for(u=0;u<m.length;u++){
+	if(m[u]!=" "){
+	e = e + m[u];
+
+	
+	} else {
+		r = u+1;
+		u=m.length;
+	}
+	}
+	
+	
+	
+	//alert("log "+e);
+	if(e!=""){
+			  var a = document.createElement("A");
+                var li = document.createElement("li");
+			  var len = localStorage.length;
+				
+				 
+				
+				 var inputValue = localStorage.getItem(p);
+				if(inputValue !== null){
+			   var t = document.createTextNode(inputValue);
+                
+
+                 
+                 var ul = document.getElementById("myUL");  
+                var a = document.createElement("a");
+                ul.appendChild(li);
+                a.appendChild(t);
+                li.setAttribute('class','abc');
+                li.insertBefore(a,li.firstChild);
+
+                a.setAttribute('href','secondary.html');
+                
+              
+
+                var span = document.createElement("SPAN");
+                var txt = document.createTextNode("\u00D7");
+                span.className = "close";
+                span.appendChild(txt);
+                li.appendChild(span);
+				}
+				p++;
+				
+				if(p<10){
+				load()
+				}
+				}
+				
+			  
+			  
+			  
+			  
+			  
+			  
+			
+			  }}
+			  function load1() {
+			  localStorage.clear();
+			  }
+			  load()
+			  for (i = 0; i < close.length; i++) {
+                  close[i].onclick = function() {
+				  
+                    var div = this.parentElement;
+					
+					div.style.display = "none";
+					
+					localStorage.removeItem("0");
+                  
+				  
+				  }
+                }
+
+</script>
 	</body>
 </html>

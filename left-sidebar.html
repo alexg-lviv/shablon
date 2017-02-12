@@ -94,7 +94,8 @@
 			<script src="assets/js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="assets/js/main.js"></script>
-			<script>
+			<script src="Scripts/login.js"></script>
+<script>
 var j,e;
 var ConnMask="conm_";
 
@@ -143,10 +144,9 @@ var ConnMask="conm_";
 	
 	
 	
-	var f = 1;
+	
 
-	if(f==1){
-		
+
 				
 				 j = myUL.children.length;
 				 
@@ -175,7 +175,7 @@ var ConnMask="conm_";
                 li.setAttribute('data-itemid',j);
                 li.insertBefore(a,li.firstChild);
 
-                a.setAttribute('href','secondary.html');
+                a.setAttribute('href','list.html');
 				
                 
                 document.getElementById("myInput").value = "";
@@ -190,10 +190,8 @@ var ConnMask="conm_";
 					
 					
                 
-              }else {
-			  document.getElementById("myInput").value = "";
-			  alert("Please sign in your account")
-			  }}}  
+              
+			 }}  
 			  var p = 0;
 			  
 			  
@@ -239,7 +237,7 @@ var ConnMask="conm_";
                 li.setAttribute('class','abc');
                 li.insertBefore(a,li.firstChild);
 
-                a.setAttribute('href','secondary.html');
+                a.setAttribute('href','list.html');
                 
               
 
@@ -275,12 +273,128 @@ var ConnMask="conm_";
 					
 					div.style.display = "none";
 					
-					localStorage.removeItem("0");
+					
                   
 				  
 				  }
                 }
-
+					
 </script>
+<style>
+
+
+#list {
+background-color:#b3b3ff;
+
+}
+
+
+/* Remove margins and padding from the list */
+.listproj {
+
+
+
+margin:auto;
+
+height:265px;
+
+
+overflow:auto;
+background-color:white;
+
+}
+.listproj ul {
+	
+  margin: 0;
+  padding: 0;
+  text-decoration:none;
+}
+
+/* Style the list items */
+.listproj ul li {
+  cursor: pointer;
+  position: relative;
+
+  padding: 12px 8px 12px 40px;
+  background: #eee;
+  font-size: 18px;
+  
+  
+  
+  /* make the list items unselectable */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Set all odd list items to a different color (zebra-stripes) */
+.listproj ul li:nth-child(odd) {
+  background: #f9f9f9;
+}
+
+/* Darker background-color on hover */
+.listproj ul li:hover {
+  background: #ddd;
+}
+
+/* When clicked on, add a background color and strike out text */
+
+
+/* Add a "checked" mark when clicked on */
+
+
+.close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 12px 16px 12px 16px
+}
+
+.close:hover {
+   background-image:url(images/pic10.jpg) ;
+  color: white;
+}
+
+/* Style the header */
+.header {
+  background-image:url(images/pic10.jpg) ;
+  padding: 20px 30px;
+  color: white;
+  text-align: center;
+}
+
+/* Clear floats after the header */
+.header:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Style the input */
+input {
+  border: none;
+  width: 75%;
+  padding: 10px;
+  float: left;
+  font-size: 16px;
+}
+
+/* Style the "Add" button */
+.addBtn {
+  padding: 9px;
+  width: 25%;
+  background: #d9d9d9;
+  color: #555;
+  float: left;
+  text-align: center;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.addBtn:hover {
+  background-color: #bbb;
+}
+</style>
 	</body>
 </html>

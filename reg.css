@@ -1,8 +1,9 @@
 #reg{
-	
+	position:relative;
+	left:36%;
 	
 }
 #reg button{
 	position:relative;
-	left:4%
+	left:8%
 }

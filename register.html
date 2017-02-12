@@ -11,6 +11,11 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="reg.css" />
+		<link rel="stylesheet" type="text/css" href="normalize.css" />
+		<link rel="stylesheet" type="text/css" href="set2.css" />
+		<link rel="stylesheet" type="text/css" href="normalize1.css" />
+		<link rel="stylesheet" type="text/css" href="buttons.css" />
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 	</head>
 	<body class="no-sidebar">
@@ -48,11 +53,29 @@
 				<div class="wrapper style2">
 					<div class="title">Project List</div>
 					<div id="reg" >
-				 <input type="textfield" class="loginn" value="" maxlength="9" id="loginn" placeholder="Login..."><br>
-				<input type="textfield"  class="footerp1" value="" id="pasword1" maxlength="6" placeholder="Password..."><br>
-				<input type="textfield"  class="footerp2" value="" id="pasword2" maxlength="6" placeholder="Password..."><br>
-				<button onclick="reg()" class="butreg"></button>
+				<button ></button>
+				<span class="input input--manami">
+					<input class="input__field input__field--manami" type="text" id="loginn" />
+					<label class="input__label input__label--manami" for="input-32">
+						<span class="input__label-content input__label-content--manami">Username</span>
+					</label>
+				</span>
+				<span class="input input--manami">
+					<input class="input__field input__field--manami" type="text" id="pasword1" />
+					<label class="input__label input__label--manami" for="input-33">
+						<span class="input__label-content input__label-content--manami">pass</span>
+					</label>
+				</span>
 
+				<span class="input input--manami">
+					<input class="input__field input__field--manami" type="text" id="pasword2" />
+					<label class="input__label input__label--manami" for="input-34">
+						<span class="input__label-content input__label-content--manami">repeat pass</span>
+					</label>
+				</span><br/>
+				<div class="box bg-1">
+					<button onclick="reg()" class="button button--ujarak button--border-thin button--text-thick">Vote</button>
+				</div>
 			</div>
 				</div>
 

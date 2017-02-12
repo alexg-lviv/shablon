@@ -56,49 +56,77 @@
 
 
 							<div id="todolist" > 
+	<div id="tasks" > 
+	<ul>
+			
+			<li class="tasks">Task</li>
 		
+	
+		
+			<li class="tasks">O</li>
+		
+		
+			
+			<li class="tasks">S</li>
+	
+		
+			<li class="tasks">P</li>
+			
+		
+			
+			<li class="tasks">Result</li>
+		
+			
+			<li class="tasks">DoneIt</li>
+		
+		
+		
+			<li class="tasks">Pohibka</li>
+			
+		</ul>
+	</div>
+			<div id="hed" > 
 		<ul id="projects1" class="pr">
 			
-			<li class="li">Task</li>
 		
 		</ul>
 		
 		<ul id="projects2"class="pr">
 		
-			<li class="li">O</li>
+
 		
 		</ul>
 		
 		<ul id="projects3" class="pr">
 			
-			<li class="li">S</li>
+
 		
 		</ul>
 		
 		<ul id="projects4" class="pr">
 			
-			<li class="li">P</li>
+	
 			
 		</ul>
 		
 		<ul id="projects5" class="pr">
 			
-			<li class="li">Result</li>
+		
 		
 		</ul>
 		
 		<ul id="projects6" class="pr">
 			
-			<li class="li">DoneIt</li>
+			
 		
 		</ul>
 		
 		<ul id="projects7" class="pr">
 		
-			<li class="li">Pohibka</li>
+			
 			
 		</ul>
-		
+		</div>
 		
 	</div> 
 	
@@ -144,33 +172,6 @@
 			</div>
 
 
-
-
-
-
-
-							
-							</div>
-
-					</div>
-				</div>
-
-
-			<!-- Footer -->
-				<div id="footer-wrapper" class="wrapper">
-				
-					<div id="footer" class="container">
-				
-					</div>
-					<div id="copyright">
-						<ul>
-							<li>&copy; Untitled.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-						</ul>
-					</div>
-				</div>
-
-		</div>
-
 		<!-- Scripts -->
 
 			<script src="assets/js/jquery.min.js"></script>
@@ -180,73 +181,281 @@
 			<script src="assets/js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="assets/js/main.js"></script>
-			<script>
+		<script>
 
- var y ;
-  var x ;
-  var n ;
-  var u;
+var y;
+var x;
+var n;
+var u;
+var j =0;
+var TaskMAsk = "tm_";
+var OMAsk = "om_";
+var SMAsk = "sm_";
+var PMAsk = "pm_";
+var DMAsk = "dm_";
+var HMAsk = "hm_";
+var k=0;
+
 function cd() {
-var f = document.getElementById("Task").value;
-var c = document.getElementById("O").value;
-var d = document.getElementById("S").value;
-var b = document.getElementById("P").value;
-
-if((f.length>0)&(c.length>0)&(d.length>0)&(b.length>0)) {
-
-	var newLi = document.createElement('li');
-  newLi.innerHTML = f;
-  projects1.insertBefore(newLi, projects1.children[1]);
-
-
-	var newLi = document.createElement('li');
-  newLi.innerHTML = c;
-  projects2.insertBefore(newLi, projects2.children[1]);
-
-
-	var newLi = document.createElement('li');
-  newLi.innerHTML = d;
-  projects3.insertBefore(newLi, projects3.children[1]);
-
-
-		var newLi = document.createElement('li');
-  newLi.innerHTML = b;
-  projects4.insertBefore(newLi, projects4.children[1]);
+  
+  
+  for(i=0;i<10;i++){
+  var m = localStorage.getItem(TaskMAsk + i);
+  if (m == null) {
+   k = i;
+  console.log(k)
+  i=10;
+  } else {
  
+  }
+  }
+  
+  var f = document.getElementById("Task").value;
+  var c = document.getElementById("O").value;
+  var d = document.getElementById("S").value;
+  var b = document.getElementById("P").value;
+  localStorage.setItem(TaskMAsk + k, f);
+  localStorage.setItem(OMAsk + k, c);
+  localStorage.setItem(SMAsk + k, d);
+  localStorage.setItem(PMAsk + k, b);
+  
+  
+  f = localStorage.getItem(TaskMAsk + k);
+  c = localStorage.getItem(OMAsk + k);
+  d = localStorage.getItem(SMAsk + k);
+  b = localStorage.getItem(PMAsk + k);
+
+
+  var newLi = document.createElement('li');
+  newLi.innerHTML = f;
+  projects1.insertBefore(newLi, projects1.children[0]);
+
+
+  var newLi = document.createElement('li');
+  newLi.innerHTML = c;
+  projects2.insertBefore(newLi, projects2.children[0]);
+
+
+  var newLi = document.createElement('li');
+  newLi.innerHTML = d;
+  projects3.insertBefore(newLi, projects3.children[0]);
+
+
+  var newLi = document.createElement('li');
+  newLi.innerHTML = b;
+  projects4.insertBefore(newLi, projects4.children[0]);
+
   y = document.getElementById("O").value;
   x = document.getElementById("S").value;
   n = document.getElementById("P").value;
-  y=parseInt(y);
-  x=parseInt(x);
-  n=parseInt(n);
- u = ((x*4)+y+n)/6;
+  y = parseInt(y);
+  x = parseInt(x);
+  n = parseInt(n);
+  u = ((x * 4) + y + n) / 6;
   u = Math.round(u);
   var newLi = document.createElement('li');
   newLi.innerHTML = u;
-  projects5.insertBefore(newLi, projects5.children[1]);	
+  projects5.insertBefore(newLi, projects5.children[0]);
+  //how much time you spend
+  var newLi = document.createElement('li');
+  var input = document.createElement('input');
+  var button = document.createElement('button');
+
+  var ul = document.getElementById("projects6");
+  ul.appendChild(newLi);
+  newLi.appendChild(input);
+  newLi.appendChild(button);
+
+  input.setAttribute('id', 'sde');
+  button.setAttribute('onClick', 'dc()');
+    button.setAttribute('class', 'gf11');
+    button.setAttribute('value', 'add');
+  projects6.insertBefore(newLi, projects6.children[0]);
+
+
+  var newLi = document.createElement('li');
+  newLi.innerHTML = "enter the field"
+  projects7.insertBefore(newLi, projects7.children[0]);
+  
+  
+  
   
 
- var input=document.createElement('input');
- input.setAttribute('id','sde');
-  projects6.insertBefore(input, projects6.children[1]);	
-var button=document.createElement('button');
-projects6.insertBefore(button, projects6.children[1]);	
-button.setAttribute('onClick','dc()');
-
-  }else {
-  
-  }
 }
 
-function dc(){
-var dji=document.getElementById("sde").value;
 
-var shhj=u-dji;
-var newLi = document.createElement('li');
+
+
+
+
+
+function load() {
+ var e="";
+var ConnMask="conm_";	
+
+
+	for(i=0;i<1;i++){
+  var m = localStorage.getItem(ConnMask + i);
+	
+	
+	
+	
+	//alert("log "+e);
+	if(m!==null){
+
+ for(i=0;i<10;i++){
+  var m = localStorage.getItem(TaskMAsk + i);
+  if (m == null) {
+   k = i;
+  console.log(k)
+  i=10;
+  } else {
+ 
+  }
+  }
+  
+for(e=0;e<k;e++){
+
+  var f = localStorage.getItem(TaskMAsk + e);
+  var c = localStorage.getItem(OMAsk + e);
+  var d = localStorage.getItem(SMAsk + e);
+  var b = localStorage.getItem(PMAsk + e);
+if(f.length>0){
+  var newLi = document.createElement('li');
+  newLi.innerHTML = f;
+  projects1.insertBefore(newLi, projects1.children[0]);
+
+  var newLi = document.createElement('li');
+  newLi.innerHTML = c;
+  projects2.insertBefore(newLi, projects2.children[0]);
+
+
+  var newLi = document.createElement('li');
+  newLi.innerHTML = d;
+  projects3.insertBefore(newLi, projects3.children[0]);
+
+
+  var newLi = document.createElement('li');
+  newLi.innerHTML = b;
+  projects4.insertBefore(newLi, projects4.children[0]);
+
+
+  y = c
+  x = d
+  n = b
+  y = parseInt(y);
+  x = parseInt(x);
+  n = parseInt(n);
+  u = ((x * 4) + y + n) / 6;
+  u = Math.round(u);
+  var newLi = document.createElement('li');
+  newLi.innerHTML = u;
+  projects5.insertBefore(newLi, projects5.children[0]);
+
+
+
+
+  var newLi = document.createElement('li');
+  var input = document.createElement('input');
+  var button = document.createElement('button');
+
+  var ul = document.getElementById("projects6");
+  ul.appendChild(newLi);
+  newLi.appendChild(input);
+  newLi.appendChild(button);
+
+  input.setAttribute('id', 'sde');
+  button.setAttribute('onClick', 'dc()');
+  projects6.insertBefore(newLi, projects6.children[0]);
+
+
+  var newLi = document.createElement('li');
+  newLi.innerHTML = "enter the field"
+  projects7.insertBefore(newLi, projects7.children[0]);
+
+   
+
+  shhj = localStorage.getItem(DMAsk + e);
+  var newLi = document.createElement('li');
   newLi.innerHTML = shhj;
-  projects7.insertBefore(newLi, projects7.children[1]);	
-} 
+  projects7.insertBefore(newLi, projects7.children[1]);
 
+  dji = localStorage.getItem(HMAsk + e);
+  var newLi = document.createElement('li');
+  newLi.innerHTML = dji;
+  projects6.insertBefore(newLi, projects6.children[1]);
+	
+ 
+for (i = 0; i < 5; i++) {
+    if (typeof(projects6.children[0]) !== "undefined") {
+      projects6.children[0] = this.parentElement;
+      projects6.children[0].style.display = "none";
+
+      projects7.children[0] = this.parentElement;
+      projects7.children[0].style.display = "none";
+    }
+  }
+
+}}
+
+
+
+
+//loading user --------------------------------------------------------------------------------
+
+
+  //loading user --------------------------------------------------------------------------------//
+}}}
+load()
+
+
+
+
+
+
+
+
+
+function dc() {
+
+for(i=0;i<10;i++){
+  var m = localStorage.getItem(TaskMAsk + i);
+  if (m == null) {
+   k = i-1;
+  console.log(k)
+  i=10;
+  } else {
+ 
+  }
+  }
+
+  var dji = document.getElementById("sde").value;
+
+  var shhj = u - dji;
+shhj = Math.abs(shhj);
+
+
+  for (i = 0; i < 5; i++) {
+    if (typeof(projects6.children[i]) != "undefined") {
+      projects6.children[0] = this.parentElement;
+      projects6.children[0].style.display = "none";
+
+      projects7.children[0] = this.parentElement;
+      projects7.children[0].style.display = "none";
+    }
+  }
+  localStorage.setItem(DMAsk + k, shhj);
+  shhj = localStorage.getItem(DMAsk + k);
+  var newLi = document.createElement('li');
+  newLi.innerHTML = shhj;
+  projects7.insertBefore(newLi, projects7.children[1]);
+
+  localStorage.setItem(HMAsk + k, dji);
+  dji = localStorage.getItem(HMAsk + k);
+  var newLi = document.createElement('li');
+  newLi.innerHTML = dji;
+  projects6.insertBefore(newLi, projects6.children[1]);
+}
 </script>
 	</body>
 </html>

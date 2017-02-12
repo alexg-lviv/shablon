@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>projects</title>
+		<title>Coala project</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -26,7 +26,7 @@
 						<!-- Logo -->
 							<div id="logo">
 							<img src="images/logo.png" width="10%" height="100%">
-								<h1><a href="index.html">Safe </a></h1>
+								<h1><a href="index.html">Coala project </a></h1>
 								<p>Created by Lits team </p>
 							</div>
 
@@ -173,7 +173,8 @@ var ConnMask="conm_";
 	
 	
 
-
+	if(m!==null){
+		
 				
 				 j = myUL.children.length;
 				 
@@ -217,8 +218,10 @@ var ConnMask="conm_";
 					
 					
                 
-              
-			 }}  
+              }else {
+			  document.getElementById("myInput").value = "";
+			  alert("Please sign in your account")
+			  }}}  
 			  var p = 0;
 			  
 			  
@@ -300,12 +303,12 @@ var ConnMask="conm_";
 					
 					div.style.display = "none";
 					
-					
+					localStorage.removeItem("0");
                   
 				  
 				  }
                 }
-					
+
 </script>
 <style>
 #lggg {
@@ -352,6 +355,11 @@ padding-top:10px;
 
 #list {
 background-color:#b3b3ff;
+box-shadow:
+   0 2px 20px rgba(0, 0, 0, .3),
+   -23px 0 20px -23px rgba(0, 0, 0, .8),
+   23px 0 20px -23px rgba(0, 0, 0, .8),
+0 0 40px rgba(0, 0, 0, .1) inset; 
 
 }
 
@@ -363,7 +371,7 @@ background-color:#b3b3ff;
 
 margin:auto;
 
-height:265px;
+height:380px;
 
 
 overflow:auto;
@@ -449,13 +457,13 @@ input {
 
 /* Style the "Add" button */
 .addBtn {
-  padding: 9px;
+  padding: 5px;
   width: 25%;
   background: #d9d9d9;
   color: #555;
   float: left;
   text-align: center;
-  font-size: 15px;
+  font-size: 25px;
   cursor: pointer;
 }
 

@@ -1,9 +1,12 @@
 #reg{
+	width:385px;
+	height:300px;
 	position:relative;
 	left:36%;
+	
 	
 }
 #reg button{
 	position:relative;
-	left:44%
+	left:25%
 }

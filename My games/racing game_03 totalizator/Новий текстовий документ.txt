@@ -1,0 +1,41 @@
+var cars = {
+
+  createCar: function() {
+    this.park.push({
+      position: 0,
+      maxSpeed: 200,
+      speed: 0,
+      maxSpeedup: 20,
+      name: "Alex"
+    })
+  },
+  park: []
+}
+
+
+function makeMove(car) {
+  if (car.speed < car.maxSpeed) {
+    car.speed += car.maxSpeedup;
+  } else if (car.maxSpeed > car.speed) {
+    car.speed = car.maxSpeed;
+  } 
+
+  car.position += car.speed;
+	
+}
+
+function tick() {
+  console.log(cars)
+
+
+ 
+  cars.park.forEach(makeMove)
+  //console.log(cars.park[0])
+  //makeMove(cars.park[0]);
+  console.log(cars.park[0])
+   console.log(cars.park[1])
+    //showData();
+}
+ cars.createCar();
+  cars.createCar();
+setInterval(tick, 500)

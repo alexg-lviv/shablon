@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+	<html>
+	
+		<head>
+		</head>
+		
+		<body>
+			<button onclick="start()">Play</button>
+			<div class="elem" id="elem3"></div>
+			<div class="elem1" id="elem2"></div>
+			<div class="elem2" id="elem1"></div>
+			<div class="elem3" id="elem"></div>
+			<div class="elem4" id="elem4"></div>
+			
+			<img class="img" id="img" src="1.png"/>
+			<img class="img1" id="img1" src="2.jpg"/>
+			<img class="img2" id="img2" src="3.jpg"/>
+			<img class="img3" id="img3" src="4.jpg"/>
+		
+			<script>
+			var curPosX1 = 0;
+			
+				function start() {
+				 
+					var cars = {
+
+						createCar: function() {
+							
+							this.park.push({
+							position: 0,
+							maxSpeed: 200,
+							speed: 0,
+							maxSpeedup: Math.floor(Math.random()*(20-5)+5),
+							name: "Alex"
+							
+							})
+						},
+						park: []
+						
+					}
+						
+					function makeMove(car) {
+						
+						if (car.speed < car.maxSpeed - car.maxSpeedup) {
+						car.speed += car.maxSpeedup;
+						} else if (car.maxSpeed > car.speed) {
+						car.speed = car.maxSpeed;
+						} 
+
+						car.position += car.speed;
+					
+					}
+						
+					
+					function tick() {
+						
+						//console.log(cars)
+						cars.park.forEach(makeMove)						
+						console.log(cars.park[0]);
+						console.log(cars.park[1]);
+						console.log(cars.park[2]);
+						console.log(cars.park[3]);
+						
+						img.style.left = (curPosX1 += 1) + cars.park[0].position + 'px';
+						img1.style.left = (curPosX1 += 1) + cars.park[1].position + 'px';
+						img2.style.left = (curPosX1 += 1) + cars.park[2].position + 'px';
+						img3.style.left = (curPosX1 += 1) + cars.park[3].position + 'px';
+						
+						
+					}
+						
+						cars.createCar();
+						cars.createCar();
+						cars.createCar();
+						cars.createCar();
+						
+					
+					
+							var IntervalID = setInterval(tick, 150)
+						
+					function stop() {
+					
+						clearInterval(IntervalID);
+					}
+						setTimeout(stop, 2000)
+					
+					
+					
+						var x = document.getElementById("elem3");
+						x.innerHTML = "First racer max speed is " + cars.park[0].maxSpeed;
+						var y = document.getElementById("elem2");
+						y.innerHTML = "Second racer max speed is " + cars.park[1].maxSpeed;
+						var z = document.getElementById("elem1");
+						z.innerHTML = "Third racer max speed is " + cars.park[2].maxSpeed;
+						var v = document.getElementById("elem");
+						v.innerHTML = "Forth racer max speed is " + cars.park[3].maxSpeed;
+					
+					var a = [];
+					var k = cars.park[0].maxSpeed / cars.park[0].maxSpeedup;
+					var l = cars.park[1].maxSpeed / cars.park[1].maxSpeedup;
+					var o = cars.park[2].maxSpeed / cars.park[2].maxSpeedup;
+					var p = cars.park[3].maxSpeed / cars.park[3].maxSpeedup;
+					a.push(k,l,o,p);
+					var i, j, k, n = a.length;
+						
+							for (j = 0; j < n; j++) {
+								
+								for (i = 0; i < n - 1; i++) {
+								
+									if (a[i] > a[i + 1]) {
+									k = a[i];
+									a[i] = a[i + 1];
+									a[i + 1] = k;
+									}
+								}
+							}
+							
+					if(a[0] == k)  {
+					alert("win");
+					}
+				
+			}	
+				
+			</script>
+			
+				<style>
+				body {
+			background-image: url(snow.jpg);
+			background-repeat:no-repeat;
+			background-size: 100%;
+			}
+			button {
+			font: 30px Comic Sans MS;
+			position:absolute;
+			left:25%;
+			border-radius:30px;
+			border-width:2px;
+			border-color:#00759C;
+			background-color:#98D8ED;
+			color:#1414B3;
+			width:50%;
+			height:8%;
+			}
+			.img {
+			position:absolute;
+			top:30%;
+			}
+			.img1 {
+			position:absolute;
+			top:42%;
+			}
+			.img2 {
+			position:absolute;
+			top:55%;
+			}
+			.img3 {
+			position:absolute;
+			top:66%;
+			}
+			.elem {
+			font: 20px Comic Sans MS;
+			text-align:center;
+			position:absolute;
+			top:10%;
+			border-width:2px;
+			border-color:#00759C;
+			background-color:#0DC2FF;
+			color:blue;
+			width:100%;
+			height:4%;
+			}
+			.elem1 {
+			font: 20px Comic Sans MS;
+			text-align:center;
+			position:absolute;
+			top:15%;
+			border-width:2px;
+			border-color:#00759C;
+			background-color:#0DC2FF;
+			color:blue;
+			width:100%;
+			height:4%;
+			}
+			.elem2 {
+			font:20px Comic Sans MS;
+			text-align:center;
+			position:absolute;
+			top:20%;
+			border-width:2px;
+			border-color:#00759C;
+			background-color:#0DC2FF;
+			color:blue;
+			width:100%;
+			height:4%;
+			}
+			.elem3 {
+			font: 20px Comic Sans MS;
+			text-align:center;
+			position:absolute;
+			top:25%;
+			border-width:2px;
+			border-color:#00759C;
+			background-color:#0DC2FF;
+			color:blue;
+			width:100%;
+			height:4%;
+			}
+			.elem4 {
+			
+			position:absolute;
+			top:30%;
+			left:914px;
+			background-color:red;
+			width:10px;
+			height:50%;
+			}
+			img {
+			height:75px;
+			width:86px;
+			}
+				</style>
+		</body>
+		
+	</html>

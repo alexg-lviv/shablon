@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>2048</title>
+	</head>
+	<body>
+	<div class="elem" id="elem"></div>
+	<canvas id="canvas" width="400" height="400"></canvas>
+		
+		<script type="text/javascript">
+			var i, j;
+			var p = 1,
+			  t = 1,
+			  d = 0,
+			  c = 1,
+			  f = 0;
+
+			function initGame() {
+			  var collection = [
+				[0, 0, 0, 0],
+				[0, 0, 1, 0],
+				[0, 1, 0, 0],
+				[0, 0, 0, 0]
+			  ];
+
+			  var game = {
+				canvas: document.getElementById('canvas'),
+				ctx: canvas.getContext('2d'),
+
+
+				draw: function() {
+				  this.ctx.clearRect(0, 0, 400, 400);
+				  this.ctx.fillStyle = 'rgba(255,255,255,0.8)';
+				  this.ctx.fillRect(0, 0, 400, 400);
+
+				  for (var x = 0; x != 400; x += 100) {
+
+					for (var y = 0; y != 400; y += 100) {
+
+					  this.ctx.strokeStyle = '#000000';
+					  this.ctx.strokeRect(x, y, 100, 100);
+					}
+				  }
+				  var h = document.getElementById("elem");
+				  h.innerHTML = "Score: " + f;
+				},
+
+				drawNumber: function(f) {
+
+
+				  for (var i = 0; i < 4; i++) {
+
+					for (var j = 0; j < 4; j++) {
+					  if (collection[i][j] != 0) {
+						if (collection[i][j] == 1) {
+						  this.ctx.fillStyle = '#B5A642';
+						  this.ctx.font = "90px Old English Text MT";
+						  this.ctx.fillText(collection[i][j], 27 + 100 * j, 78 + 100 * i);
+						}
+						if (collection[i][j] == 2) {
+						  this.ctx.fillStyle = '#9aCD32';
+						  this.ctx.font = "90px Old English Text MT";
+						  this.ctx.fillText(collection[i][j], 27 + 100 * j, 78 + 100 * i);
+						}
+						if (collection[i][j] == 4) {
+						  this.ctx.fillStyle = '#1E8F00';
+						  this.ctx.font = "90px Old English Text MT";
+						  this.ctx.fillText(collection[i][j], 27 + 100 * j, 78 + 100 * i);
+						}
+						if (collection[i][j] == 8) {
+						  this.ctx.fillStyle = '#FF4F00';
+						  this.ctx.font = "90px Old English Text MT";
+						  this.ctx.fillText(collection[i][j], 27 + 100 * j, 78 + 100 * i);
+						}
+						if (collection[i][j] == 16) {
+						  this.ctx.fillStyle = '#EE204D'; //F41F6E
+						  this.ctx.font = "72px Old English Text MT";
+						  this.ctx.fillText(collection[i][j], 14 + 100 * j, 72 + 100 * i);
+						}
+						if (collection[i][j] == 32) {
+						  this.ctx.fillStyle = '#00FF7C';
+						  this.ctx.font = "72px Old English Text MT";
+						  this.ctx.fillText(collection[i][j], 14 + 100 * j, 72 + 100 * i);
+						}
+						if (collection[i][j] == 64) {
+						  this.ctx.fillStyle = '#1FACF4';
+						  this.ctx.font = "72px Old English Text MT";
+						  this.ctx.fillText(collection[i][j], 14 + 100 * j, 72 + 100 * i);
+						}
+						if (collection[i][j] == 128) {
+						  this.ctx.fillStyle = '#0000FF';
+						  this.ctx.font = "64px Old English Text MT";
+						  this.ctx.fillText(collection[i][j], 1 + 100 * j, 72 + 100 * i);
+						}
+
+
+						if (collection[i][j] == 256) {
+						  this.ctx.fillStyle = '#8B00FF';
+						  this.ctx.font = "64px Old English Text MT";
+						  this.ctx.fillText(collection[i][j], 1 + 100 * j, 72 + 100 * i);
+						}
+
+						if (collection[i][j] == 512) {
+						  this.ctx.fillStyle = '#CC0605';
+						  this.ctx.font = "64px Old English Text MT";
+						  this.ctx.fillText(collection[i][j], 1 + 100 * j, 72 + 100 * i);
+						}
+						if (collection[i][j] == 1024) {
+						  this.ctx.fillStyle = '#FFFB00';
+						  this.ctx.font = "48px Old English Text MT";
+						  this.ctx.fillText(collection[i][j], 1 + 100 * j, 68 + 100 * i);
+						}
+						if (collection[i][j] == 2048) {
+						  this.ctx.fillStyle = '#AB009F';
+						  this.ctx.font = "48px Old English Text MT";
+						  this.ctx.fillText(collection[i][j], 1 + 100 * j, 68 + 100 * i);
+						}
+						if ((collection[i][j] > 2048) && (collection[i][j] < 16000)) {
+						  this.ctx.fillStyle = '#F41F6E';
+						  this.ctx.font = "46px Old English Text MT";
+						  this.ctx.fillText(collection[i][j], 4 + 100 * j, 66 + 100 * i);
+						}
+						if (collection[i][j] > 16000) {
+						  this.ctx.fillStyle = '#CC0605';
+						  this.ctx.font = "40px Old English Text MT";
+						  this.ctx.fillText(collection[i][j], 0 + 100 * j, 66 + 100 * i);
+						}
+
+
+					  }
+					}
+				  }
+				},
+
+				spawnNumber: function(f) {
+
+				  this.ctx.fillStyle = '#B5A642';
+				  this.ctx.font = "90px Old English Text MT";
+				  i = Math.round(Math.random() * (3 - 0) + 0);
+				  j = Math.round(Math.random() * (3 - 0) + 0);
+				  if (collection[i][j] == 0) {
+					collection[i][j] = 1;
+					this.ctx.fillText(collection[i][j], 27 + 100 * j, 78 + 100 * i);
+				  } else {
+
+					game.spawnNumber()
+
+				  }
+
+				},
+				check: function() {
+
+				  for (var i = 0; i < 4; i++) {
+
+					for (var j = 0; j < 4; j++) {
+
+					  if (((collection[i][j] == 0) && (d != 2)) || ((j < 3) && (collection[i][j] == collection[i][j + 1])) || ((i < 3) && (collection[i][j] == collection[i + 1][j]))) {
+						if (d < 2) {
+						  d = 1;
+						}
+
+					  }
+
+
+					}
+				  }
+				  if (d == 1) {
+					d = 0;
+
+				  } else {
+					d = 2;
+					t = 0;
+					if (c > 0) {
+					  alert("You lose");
+					  c = 0;
+					}
+				  }
+
+				},
+
+
+
+
+
+
+
+
+				moveLeft: function(e) {
+				  if (t == 1) {
+
+					function movel() {
+					  switch (e.keyCode) {
+						case 37:
+
+						  t = 0;
+						  for (var i = 0; i < 4; i++) {
+
+							for (var j = 0; j < 4; j++) {
+							  if ((collection[i][j] == collection[i][j + 1]) && (collection[i][j] != 0)) {
+								collection[i][j] = collection[i][j] + collection[i][j + 1];
+								collection[i][j + 1] = 0;
+								f = f + collection[i][j];
+								var h = document.getElementById("elem");
+								h.innerHTML = "Score: " + f;
+								//console.log(collection);
+								game.draw()
+								game.drawNumber()
+								if (p > 0) {
+								  p = 0;
+								}
+							  }
+							  if ((collection[i][j] == 0) && (collection[i][j + 1] != 0)) {
+								if (j < 3) {
+								  collection[i][j] = collection[i][j + 1];
+
+								  collection[i][j + 1] = 0;
+								  if (p > 0) {
+									p = 0;
+								  }
+								}
+								game.draw()
+								game.drawNumber()
+
+							  }
+							}
+						  }
+						  game.check()
+					  }
+					}
+				  }
+				  var IntervalID = setInterval(movel, 1000 / 20);
+
+				  function stop() {
+
+					clearInterval(IntervalID);
+					if (p == 0) {
+					  game.spawnNumber()
+					  p = 1;
+					}
+					t = 1;
+				  }
+
+				  setTimeout(stop, 400);
+				},
+
+				moveRight: function(e) {
+				  if (t == 1) {
+					function mover() {
+					  switch (e.keyCode) {
+						case 39:
+						  t = 0;
+						  for (var i = 3; i >= 0; i--) {
+
+							for (var j = 3; j >= 0; j--) {
+							  if ((collection[i][j] == collection[i][j - 1]) && (collection[i][j - 1] != 0)) {
+								collection[i][j] = collection[i][j] + collection[i][j - 1];
+								collection[i][j - 1] = 0;
+								f = f + collection[i][j];
+								var h = document.getElementById("elem");
+								h.innerHTML = "Score: " + f;
+								// console.log(collection);
+								game.draw()
+								game.drawNumber()
+								if (p > 0) {
+								  p = 0;
+								}
+							  }
+							  if ((collection[i][j] == 0) && (collection[i][j - 1] != 0)) {
+								if (j > 0) {
+								  collection[i][j] = collection[i][j - 1];
+
+								  collection[i][j - 1] = 0;
+
+								  game.draw()
+								  game.drawNumber()
+								  if (p > 0) {
+									p = 0;
+								  }
+								}
+							  }
+							}
+						  }
+
+						  game.check()
+					  }
+					}
+					var IntervalID = setInterval(mover, 1000 / 20);
+
+					function stop() {
+
+					  clearInterval(IntervalID);
+					  t = 1;
+					  if (p == 0) {
+						game.spawnNumber()
+						p = 1;
+					  }
+					}
+
+					setTimeout(stop, 400);
+				  }
+				},
+				moveUp: function(e) {
+				  if (t == 1) {
+
+					function moveu() {
+
+					  switch (e.keyCode) {
+						case 38:
+						  t = 0;
+						  for (var i = 0; i < 4; i++) {
+
+							for (var j = 0; j < 4; j++) {
+							  if ((i < 3) && (collection[i][j] == collection[i + 1][j]) && (collection[i][j] != 0)) {
+								collection[i][j] = collection[i][j] + collection[i + 1][j];
+								collection[i + 1][j] = 0;
+								f = f + collection[i][j];
+								var h = document.getElementById("elem");
+								h.innerHTML = "Score: " + f;
+								//console.log(collection);
+								game.draw()
+								game.drawNumber()
+								if (p > 0) {
+								  p = 0;
+								}
+							  }
+							  if (i < 3) {
+								if ((collection[i][j] == 0) && (collection[i + 1][j] != 0)) {
+
+								  collection[i][j] = collection[i + 1][j];
+
+								  collection[i + 1][j] = 0;
+								  if (p > 0) {
+									p = 0;
+								  }
+								}
+								game.draw()
+								game.drawNumber()
+							  }
+							}
+						  }
+
+
+						  game.check()
+					  }
+					}
+					var IntervalID = setInterval(moveu, 1000 / 20);
+
+					function stop() {
+
+					  clearInterval(IntervalID);
+					  t = 1;
+					  if (p == 0) {
+						game.spawnNumber()
+						p = 1;
+					  }
+
+					}
+
+					setTimeout(stop, 400);
+				  }
+				},
+
+
+				moveDown: function(e) {
+				  if (t == 1) {
+
+					function moved() {
+					  switch (e.keyCode) {
+						case 40:
+						  t = 0;
+						  for (var i = 3; i >= 0; i--) {
+
+							for (var j = 3; j >= 0; j--) {
+							  if ((i > 0) && (collection[i - 1][j] == collection[i][j]) && (collection[i][j] != 0)) {
+								collection[i][j] = collection[i][j] + collection[i - 1][j];
+								collection[i - 1][j] = 0;
+								f = f + collection[i][j];
+								var h = document.getElementById("elem");
+								h.innerHTML = "Score: " + f;
+								if (p > 0) {
+								  p = 0;
+								}
+
+
+							  }
+							  if (i > 0) {
+								if ((collection[i][j] == 0) && (collection[i - 1][j] != 0)) {
+
+								  collection[i][j] = collection[i - 1][j];
+
+								  collection[i - 1][j] = 0;
+
+								  if (p > 0) {
+									p = 0;
+								  }
+								}
+							  }
+							}
+						  }
+						  game.draw()
+						  game.drawNumber()
+						  game.check()
+					  }
+					}
+					var IntervalID1 = setInterval(moved, 1000 / 20);
+
+					function sstop1() {
+					  clearInterval(IntervalID1);
+					  if (p == 0) {
+						game.spawnNumber()
+						p = 1;
+					  }
+					  t = 1;
+					}
+
+					setTimeout(sstop1, 400);
+				  }
+				},
+
+			  }
+			  game.draw()
+			  game.drawNumber()
+			  return game
+			}
+
+			var game = initGame();
+
+
+			function ivent() {
+			  addEventListener("keydown", game.moveLeft);
+			  addEventListener("keydown", game.moveRight);
+			  addEventListener("keydown", game.moveDown);
+			  addEventListener("keydown", game.moveUp);
+			}
+			ivent()
+	
+		</script>
+		<style>
+		body {
+			background-image: url(1.jpg);
+			
+			background-size: 100%;
+		
+			
+			}
+			canvas {
+			position:relative;
+			left:480px;
+			top:120px;
+		
+			}
+			.elem {
+			
+			font: 20px Comic Sans MS;
+			text-align:center;
+			position:absolute;
+			top:97px;
+			left:488px;
+			border-width:2px;
+			border-color:#00759C;
+			background-color:rgba(0,255,0,0.5);
+			color:yellow;
+			width:400px;
+			height:30px;;
+
+			}
+		</style>
+	</body>
+</html>

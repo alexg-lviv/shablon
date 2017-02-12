@@ -11,6 +11,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" type="text/css" href="normalize.css" />
+		<link rel="stylesheet" type="text/css" href="set2.css" />
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 	</head>
 	<body class="no-sidebar">
@@ -40,11 +42,24 @@
 							</nav>
 						<div id="log">
 	
-						 <input type="textfield" class="footeru" value="" id="login" maxlength="9" placeholder="Login..."><br>
-						 <input type="password"  class="footerp"   id="pasword" maxlength="6" placeholder="Password..."><br>
+					
+
+						 <span class="input input--manami" >
+								<input class="input__field input__field--manami" type="text" id="login" />
+								<label class="input__label input__label--manami" for="input-32">
+									<span class="input__label-content input__label-content--manami">login</span>
+								</label>
+							</span>
+							<br/>
+							<span class="input input--manami" id="in1">
+								<input class="input__field input__field--manami" type="text" id="pasword" />
+								<label class="input__label input__label--manami" for="input-33">
+									<span class="input__label-content input__label-content--manami">pass</span>
+					</label>
+				</span>
 						 <button onclick="login()" class="butreg"  >Log-in</button>
 						 <button onclick="pass()" class="butreg"></button>
-
+						 <br/>
 						<a  class="footer2" href="register.html">register</a>
 						</div>
 						<div id="lggg" >
@@ -303,11 +318,26 @@ height:10px;
 background-color:red;
 
 }
+#in1{
+	position:relative;
+	top:-30px;
+}
 #log {
 position:absolute;
 left:1050px;
+top:0px;
 width:300px;
 heigth:100px;
+}
+#log .butreg{
+	position:relative;
+	left:25%;
+	top:-50px;
+}
+#log a{
+	position:relative;
+	left:39%;
+	top:-50px;
 }
 
 .footerp {

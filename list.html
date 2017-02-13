@@ -239,6 +239,7 @@ function cd() {
   var c = document.getElementById("O").value;
   var d = document.getElementById("S").value;
   var b = document.getElementById("P").value;
+  if((f!="")&(c!="")&(d!="")&(b!="")){
   localStorage.setItem(TaskMAsk + k, f);
   localStorage.setItem(OMAsk + k, c);
   localStorage.setItem(SMAsk + k, d);
@@ -304,7 +305,9 @@ function cd() {
   
   
   
-  
+  } else {
+  alert("enter the field")
+  }
 
 }
 

@@ -40,7 +40,8 @@ for(i=0;i<1;i++){
 	var button = document.createElement("button");
 	button.className = "butlogout";
 	button.setAttribute('onClick', 'out()');
-	
+	var j = "logout"
+	button.innerHTML = j;
 	document.getElementById('lggg').appendChild(button);
 	location.reload();
 	
@@ -81,7 +82,8 @@ function load() {
 	var button = document.createElement("button");
 	button.className = "butlogout";
 	button.setAttribute('onClick', 'out()');
-	
+	var j = "logout"
+	button.innerHTML = j;
 	document.getElementById('lggg').appendChild(button);
 	
 	
